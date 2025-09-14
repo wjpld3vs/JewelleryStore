@@ -29,7 +29,7 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<Ubicaciones> Ubicaciones { get; set; }
 
-    public virtual DbSet<Usuario> Usuario { get; set; }
+    public virtual DbSet<Usuarios> Usuarios { get; set; }
 
     public virtual DbSet<Vendedores> Vendedores { get; set; }
 
@@ -74,6 +74,11 @@ public partial class AppDbContext : DbContext
         modelBuilder.Entity<Ubicaciones>(entity =>
         {
             entity.HasKey(e => e.UbicacionId).HasName("PK__Ubicacio__10375DF5E78340B3");
+        });
+
+        modelBuilder.Entity<Usuarios>(entity =>
+        {
+            entity.HasKey(e => e.IdUsuario).HasName("PK_Usuario");
         });
 
         modelBuilder.Entity<Vendedores>(entity =>

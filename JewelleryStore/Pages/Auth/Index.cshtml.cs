@@ -39,7 +39,7 @@ namespace JewelleryStore.Pages.Auth
                 return Page();
 
             // Buscar usuario por nombre o correo (sin filtrar por contraseña aquí)
-            var usuario = await _db.Usuario
+            var usuario = await _db.Usuarios
                                        .SingleOrDefaultAsync(u =>
                                        u.NombreUsuario == Username && u.ContrasenaUsuario == Password);
 

@@ -10,22 +10,34 @@
 
     <div class="form-group">
         <label asp-for="Usuario">Usuario</label>
-        <input asp-for="Usuario" class="form-control" />
+        <input asp-for="Usuario" placeholder="Ingrese el nombre del usuario" class="form-control" />
         <span asp-validation-for="Usuario" class="text-danger"></span>
     </div>
     <br />
     <div class="form-group">
+        <label asp-for="Correo">Correo</label>
+        <input type="email" asp-for="Correo" placeholder="Ingrese su correo electrónico" class="form-control" />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
         <label asp-for="Contrasena">Contraseña</label>
-        <input asp-for="Contrasena" type="password" class="form-control" />
+        <input asp-for="Contrasena" type="password" placeholder="Ingrese su contraseña" class="form-control" />
         <span asp-validation-for="Contrasena" class="text-danger"></span>
     </div>
-
+    <br />
+    <div class="form-group">
+        <label asp-for="ConfirmarContrasena">Confirmar contraseña</label>
+        <input asp-for="ConfirmarContrasena" type="password" placeholder="Ingrese su contraseña nuevamente" class="form-control" />
+        <span asp-validation-for="ConfirmarContrasena" class="text-danger"></span>
+    </div>
     <br />
 
     @Html.AntiForgeryToken()
     
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-dark">Registrar</button>
+        <a asp-page="/Auth/Index" class="btn btn-light btn-secondary">Volver al inicio de sesión</a>
     </div>
 </form>
 

@@ -6,8 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JewelleryStore.Data;
 
+[Index("CorreoUsuario", Name = "CorreoUnico", IsUnique = true)]
 [Index("NombreUsuario", Name = "NombreUsuarioUnico", IsUnique = true)]
-public partial class Usuario
+public partial class Usuarios
 {
     [StringLength(500)]
     public string NombreUsuario { get; set; } = null!;
@@ -17,4 +18,7 @@ public partial class Usuario
 
     [Key]
     public int IdUsuario { get; set; }
+
+    [StringLength(500)]
+    public string CorreoUsuario { get; set; } = null!;
 }

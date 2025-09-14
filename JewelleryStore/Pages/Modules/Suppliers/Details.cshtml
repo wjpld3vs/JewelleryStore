@@ -1,0 +1,36 @@
+﻿@page
+@model JewelleryStore.Pages.Modules.Suppliers.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalle de proveedor";
+}
+
+<h1>Detalle de proveedor</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proveedores.NombreProveedor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proveedores.NombreProveedor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proveedores.TelefonoProveedor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proveedores.TelefonoProveedor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proveedores.DireccionProveedor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proveedores.DireccionProveedor)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary btn-dark" asp-page="./Edit" asp-route-id="@Model.Proveedores.IdProveedor">Editar</a> |
+    <a class="btn btn-light btn-secondary" asp-page="./Index">Regresar</a>
+</div>

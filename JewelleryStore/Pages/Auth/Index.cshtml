@@ -1,0 +1,32 @@
+﻿@page
+@model JewelleryStore.Pages.Auth.IndexModel
+@{
+    ViewData["Title"] = "Login";
+}
+<h2>Iniciar sesión</h2>
+
+<form method="post" novalidate>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Username">Username</label>
+        <input asp-for="Username" placeholder="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <label asp-for="Password">Password</label>
+        <input asp-for="Password" placeholder="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <br /> 
+
+    @Html.AntiForgeryToken()
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-dark">Iniciar sesión</button>
+        <a class="btn btn-light btn-secondary" asp-page="Register" >Crear cuenta</a>
+        <a class="btn btn-light btn-link" asp-page="ResetPassword">¿Has olvidado tu contraseña?</a>
+    </div>
+
+</form>

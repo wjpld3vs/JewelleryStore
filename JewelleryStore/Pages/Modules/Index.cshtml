@@ -1,0 +1,198 @@
+﻿@page
+@model JewelleryStore.Pages.Modules.IndexModel
+@{
+    ViewData["Title"] = "Modules";
+}
+
+<main class="py-4">
+    <div class="container">
+
+        <!-- Entrada de datos -->
+        <h2 id="entrada" class="h5 fw-bold section-title mb-3">Entrada de datos</h2>
+        <div class="row g-3 mb-4">
+            <!-- Proveedores -->
+            <div class="col-12 col-sm-6 col-lg-4 module" data-cat="entrada" data-keywords="proveedores alta edicion listado contactos">
+                <div class="card module-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0"><i class="bi bi-truck me-2"></i>Proveedores</h3>
+                            <span class="chip">Entrada</span>
+                        </div>
+                        <p class="text-muted mt-2 mb-3">Registro y gestión de proveedores y datos de contacto.</p>
+                        <div class="d-flex gap-2">
+                            <a asp-page="/Modules/Suppliers/Index" class="btn btn-sm btn-dark"  >Abrir</a>
+                            <a asp-page="/Modules/Suppliers/Create" class="btn btn-sm btn-secondary">Nuevo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Clientes -->
+            <div class="col-12 col-sm-6 col-lg-4 module" data-cat="entrada" data-keywords="clientes alta fidelizacion crm">
+                <div class="card module-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0"><i class="bi bi-people me-2"></i>Clientes</h3>
+                            <span class="chip">Entrada</span>
+                        </div>
+                        <p class="text-muted mt-2 mb-3">Gestión de clientes, preferencias y direcciones.</p>
+                        <div class="d-flex gap-2">
+                            <a href="/clientes" class="btn btn-sm btn-dark">Abrir</a>
+                            <a href="/clientes/nuevo" class="btn btn-sm btn-secondary">Nuevo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Productos -->
+            <div class="col-12 col-sm-6 col-lg-4 module" data-cat="entrada" data-keywords="productos inventario categorias joyas anillos collares pulseras">
+                <div class="card module-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0"><i class="bi bi-gem me-2"></i>Productos</h3>
+                            <span class="chip">Entrada</span>
+                        </div>
+                        <p class="text-muted mt-2 mb-3">Catálogo de productos y <strong>categorías</strong> (anillos, collares, etc.).</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="/productos" class="btn btn-sm btn-dark">Abrir</a>
+                            <a href="/productos/nuevo" class="btn btn-sm btn-secondary">Nuevo</a>
+                            <a href="/categorias" class="btn btn-sm btn-secondary">Categorías</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Procesos -->
+        <h2 id="procesos" class="h5 fw-bold section-title mb-3">Procesos</h2>
+        <div class="row g-3 mb-4">
+            <!-- Compras -->
+            <div class="col-12 col-sm-6 col-lg-4 module" data-cat="proceso" data-keywords="compras proveedores ordenes recepcion costos">
+                <div class="card module-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0"><i class="bi bi-bag-plus me-2"></i>Compras</h3>
+                            <span class="chip">Proceso</span>
+                        </div>
+                        <p class="text-muted mt-2 mb-3">Órdenes de compra, recepción y costos.</p>
+                        <div class="d-flex gap-2">
+                            <a href="/compras" class="btn btn-sm btn-dark">Abrir</a>
+                            <a href="/compras/nueva" class="btn btn-sm btn-secondary">Nueva</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Ventas -->
+            <div class="col-12 col-sm-6 col-lg-4 module" data-cat="proceso" data-keywords="ventas tickets facturas punto de venta">
+                <div class="card module-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0"><i class="bi bi-cash-coin me-2"></i>Ventas</h3>
+                            <span class="chip">Proceso</span>
+                        </div>
+                        <p class="text-muted mt-2 mb-3">Facturación, POS y gestión de tickets.</p>
+                        <div class="d-flex gap-2">
+                            <a href="/ventas" class="btn btn-sm btn-dark">Abrir</a>
+                            <a href="/ventas/nueva" class="btn btn-sm btn-secondary">Nueva</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Devoluciones -->
+            <div class="col-12 col-sm-6 col-lg-4 module" data-cat="proceso" data-keywords="devoluciones notas credito cambios garantias">
+                <div class="card module-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0"><i class="bi bi-arrow-counterclockwise me-2"></i>Devoluciones</h3>
+                            <span class="chip">Proceso</span>
+                        </div>
+                        <p class="text-muted mt-2 mb-3">Gestión de devoluciones y notas de crédito.</p>
+                        <div class="d-flex gap-2">
+                            <a href="/devoluciones" class="btn btn-sm btn-dark">Abrir</a>
+                            <a href="/devoluciones/nueva" class="btn btn-sm btn-secondary">Nueva</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Crédito -->
+            <div class="col-12 col-sm-6 col-lg-4 module" data-cat="proceso" data-keywords="credito cuentas por cobrar cuotas">
+                <div class="card module-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0"><i class="bi bi-journal-richtext me-2"></i>Crédito</h3>
+                            <span class="chip">Proceso</span>
+                        </div>
+                        <p class="text-muted mt-2 mb-3">Cuentas por cobrar y planes de pago.</p>
+                        <div class="d-flex gap-2">
+                            <a href="/credito" class="btn btn-sm btn-dark">Abrir</a>
+                            <a href="/credito/nuevo" class="btn btn-sm btn-secondary">Nuevo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Caja (Arqueo de caja) -->
+            <div class="col-12 col-sm-6 col-lg-4 module" data-cat="proceso" data-keywords="caja arqueo cierres efectivo">
+                <div class="card module-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0"><i class="bi bi-safe2 me-2"></i>Caja (Arqueo)</h3>
+                            <span class="chip">Proceso</span>
+                        </div>
+                        <p class="text-muted mt-2 mb-3">Arqueo, cierres y control de efectivo.</p>
+                        <div class="d-flex gap-2">
+                            <a href="/caja" class="btn btn-sm btn-dark">Abrir</a>
+                            <a href="/caja/nuevo-arqueo" class="btn btn-sm btn-secondary">Nuevo arqueo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Otras salidas de inventario -->
+            <div class="col-12 col-sm-6 col-lg-4 module" data-cat="proceso" data-keywords="inventario salidas ajustes mermas">
+                <div class="card module-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0"><i class="bi bi-box-arrow-right me-2"></i>Otras salidas de inventario</h3>
+                            <span class="chip">Proceso</span>
+                        </div>
+                        <p class="text-muted mt-2 mb-3">Ajustes, mermas y movimientos.</p>
+                        <div class="d-flex gap-2">
+                            <a href="/inventario/salidas" class="btn btn-sm btn-dark">Abrir</a>
+                            <a href="/inventario/salidas/nueva" class="btn btn-sm btn-secondary">Nueva salida</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reportes -->
+        <h2 id="reportes" class="h5 fw-bold section-title mb-3">Reportes (PDF)</h2>
+        <div class="row g-3">
+            <div class="col-12 col-lg-8 module" data-cat="reporte" data-keywords="reportes pdf compras ventas devoluciones credito caja inventario">
+                <div class="card module-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0"><i class="bi bi-filetype-pdf me-2"></i>Sección de Reportes</h3>
+                            <span class="chip">Reportes</span>
+                        </div>
+                        <p class="text-muted mt-2">Descarga reportes en PDF por proceso.</p>
+                        <div class="row g-2">
+                            <div class="col-12 col-md-6">
+                                <div class="d-grid gap-2">
+                                    <a class="btn btn-dark btn-sm" href="/reportes/compras.pdf" target="_blank"><i class="bi bi-file-earmark-text me-1"></i>Compras (PDF)</a>
+                                    <a class="btn btn-dark btn-sm" href="/reportes/ventas.pdf" target="_blank"><i class="bi bi-file-earmark-text me-1"></i>Ventas (PDF)</a>
+                                    <a class="btn btn-dark btn-sm" href="/reportes/devoluciones.pdf" target="_blank"><i class="bi bi-file-earmark-text me-1"></i>Devoluciones (PDF)</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="d-grid gap-2">
+                                    <a class="btn btn-dark btn-sm" href="/reportes/credito.pdf" target="_blank"><i class="bi bi-file-earmark-text me-1"></i>Crédito (PDF)</a>
+                                    <a class="btn btn-dark btn-sm" href="/reportes/caja.pdf" target="_blank"><i class="bi bi-file-earmark-text me-1"></i>Caja / Arqueo (PDF)</a>
+                                    <a class="btn btn-dark btn-sm" href="/reportes/otras-salidas.pdf" target="_blank"><i class="bi bi-file-earmark-text me-1"></i>Otras salidas (PDF)</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>

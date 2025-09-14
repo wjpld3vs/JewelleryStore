@@ -1,0 +1,51 @@
+﻿@page
+@model JewelleryStore.Pages.Modules.Suppliers.IndexModel
+
+@{
+    ViewData["Title"] = "Proveedores";
+}
+
+<h1>Proveedores</h1>
+
+<p>
+    <a class="btn btn-primary btn-dark" asp-page="Create">Nuevo proveedor</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Proveedores[0].NombreProveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proveedores[0].TelefonoProveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proveedores[0].DireccionProveedor)
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Proveedores) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DireccionProveedor)
+            </td>
+            <td>
+                <a class="btn btn-light btn-outline-primary" asp-page="./Edit" asp-route-id="@item.IdProveedor">Editar</a> |
+                <a class="btn btn-light btn-outline-info" asp-page="./Details" asp-route-id="@item.IdProveedor">Detalles</a> |
+                <a class="btn btn-light btn-outline-danger" asp-page="./Delete" asp-route-id="@item.IdProveedor">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

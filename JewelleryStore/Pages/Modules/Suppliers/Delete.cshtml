@@ -1,0 +1,38 @@
+﻿@page
+@model JewelleryStore.Pages.Modules.Suppliers.DeleteModel
+
+@{
+    ViewData["Title"] = "Eliminar proveedor";
+}
+
+<h1>¿Estas seguro que deseas eliminar esto?</h1>
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proveedores.NombreProveedor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proveedores.NombreProveedor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proveedores.TelefonoProveedor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proveedores.TelefonoProveedor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proveedores.DireccionProveedor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proveedores.DireccionProveedor)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Proveedores.IdProveedor" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a class="btn btn-light btn-secondary" asp-page="./Index">Regresar</a>
+    </form>
+</div>

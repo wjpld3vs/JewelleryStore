@@ -26,7 +26,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // Add services to the container.
 builder.Services.AddRazorPages(options =>
 {
-    options.Conventions.AuthorizeFolder("/Modules/Suppliers"); // todas las páginas en /Admin requieren auth
+    options.Conventions.AuthorizeFolder("/Modules/Suppliers");
+    options.Conventions.AuthorizeFolder("/Modules/Clients");
 });
 
 

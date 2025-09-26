@@ -1,0 +1,37 @@
+﻿@page
+@model JewelleryStore.Pages.Modules.Products.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Productos</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Productos.NombreProducto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Productos.NombreProducto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Productos.Precio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Productos.Precio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Productos.Categoria)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Productos.Categoria.CategoriaId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Productos.ProductoId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

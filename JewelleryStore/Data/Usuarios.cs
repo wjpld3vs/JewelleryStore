@@ -21,4 +21,6 @@ public partial class Usuarios
 
     [StringLength(500)]
     public string CorreoUsuario { get; set; } = null!;
+
+    public bool Recordar { get; set; }
 }

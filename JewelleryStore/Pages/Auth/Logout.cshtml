@@ -1,0 +1,11 @@
+﻿@page
+@model JewelleryStore.Pages.Auth.LogoutModel
+@{
+}
+
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+    <a asp-page="/Auth/Index" class="btn btn-secondary">Cancelar</a>
+</form>

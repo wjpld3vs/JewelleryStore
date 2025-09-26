@@ -27,12 +27,14 @@ namespace JewelleryStore.Pages.Auth
         [Required(ErrorMessage = "La contraseña es obligatoria.")]
         public string Password { get; set; } = string.Empty;
 
+        public bool Remember { get; set; }
+
 
         public void OnGet()
         {
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {
             // Validación del modelo (Required)
             if (!ModelState.IsValid)
@@ -49,6 +51,33 @@ namespace JewelleryStore.Pages.Auth
                 ModelState.AddModelError(string.Empty, "Usuario o contraseña inválidos.");
                 return Page();
             }
+
+            // claims
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, usuario.IdUsuario.ToString()),
+                new Claim(ClaimTypes.Name, usuario.NombreUsuario),
+                new Claim(ClaimTypes.Email, usuario.CorreoUsuario)
+            };
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(claimsIdentity);
+
+            // 3) AuthenticationProperties: persistente (RememberMe) o no
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = Remember,
+                // Si se quiere una expiración personalizada:
+                ExpiresUtc = Remember ? DateTimeOffset.UtcNow.AddDays(30) : DateTimeOffset.UtcNow.AddHours(1),
+                AllowRefresh = true
+            };
+
+            // 4) Sign in (genera la cookie)
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProperties);
+
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                return LocalRedirect(returnUrl);
+
 
             return RedirectToPage("/Modules/Index");
         }

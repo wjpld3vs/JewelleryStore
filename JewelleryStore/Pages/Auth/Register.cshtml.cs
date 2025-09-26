@@ -78,7 +78,8 @@ namespace JewelleryStore.Pages.Auth
                 {
                     NombreUsuario = Usuario,
                     ContrasenaUsuario = Contrasena, // texto plano
-                    CorreoUsuario = Correo
+                    CorreoUsuario = Correo,
+                    Recordar = true
                 };
 
                 _db.Usuarios.Add(usuario);

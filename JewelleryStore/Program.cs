@@ -29,6 +29,7 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AuthorizeFolder("/Modules/Suppliers");
     options.Conventions.AuthorizeFolder("/Modules/Clients");
     options.Conventions.AuthorizeFolder("/Modules/Products");
+    options.Conventions.AuthorizeFolder("/Modules/Categoies");
 });
 
 

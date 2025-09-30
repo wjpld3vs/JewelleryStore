@@ -15,3 +15,8 @@ jobs:
     steps:
       - name: "hola mundo"
         run: echo "hola mundano"
+      - name: "La fecha actual"
+        run: date
+      - name: "Mostrar archivos"
+        run: ls -l
+

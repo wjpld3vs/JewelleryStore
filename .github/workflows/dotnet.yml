@@ -16,3 +16,7 @@ jobs:
     steps:
       - name: "hola"
         run: echo "holaaaa"
+      - name: "fecha"
+        run: date
+      - name: "ver archivos"
+        run: ls -la

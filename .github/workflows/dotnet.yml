@@ -18,5 +18,5 @@ jobs:
       - name: "La fecha actual"
         run: date
       - name: "Mostrar archivos"
-        run: ls -l
+        run: ls -la
 

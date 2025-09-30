@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
       - name: "hola mundo"
         run: echo "hola mundano"
       - name: "La fecha actual"

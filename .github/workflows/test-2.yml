@@ -9,7 +9,7 @@ on:
 jobs:
   codeql-analysis:
     name: "CodeQL - Análisis de Seguridad C#"
-    runs-on: self-hosted
+    runs-on: windows-lastest
     permissions:
       security-events: write
       actions: read

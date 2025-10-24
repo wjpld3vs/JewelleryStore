@@ -1,0 +1,78 @@
+﻿@page
+@model JewelleryStore.Pages.Modules.ModuloCompras.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Compras[0].NumeroFactura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compras[0].FechaCompras)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compras[0].FechaRegistro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compras[0].Subtotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compras[0].Iva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compras[0].Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compras[0].Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compras[0].IdProveedorNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Compras) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroFactura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCompras)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subtotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Iva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProveedorNavigation.NombreProveedor)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CompraId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CompraId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CompraId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

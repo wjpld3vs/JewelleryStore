@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using JewelleryStore.Data;
 
-namespace JewelleryStore.Pages.Modules.Products
+namespace JewelleryStore.Pages.Modules.ModuloCompras
 {
     public class CreateModel : PageModel
     {
@@ -20,12 +20,12 @@ namespace JewelleryStore.Pages.Modules.Products
 
         public IActionResult OnGet()
         {
-        ViewData["CategoriaId"] = new SelectList(_context.Categorias, "CategoriaId", "NombreCategoria");
+        ViewData["IdProveedor"] = new SelectList(_context.Proveedores, "IdProveedor", "NombreProveedor");
             return Page();
         }
 
         [BindProperty]
-        public Productos Productos { get; set; } = default!;
+        public Compras Compras { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +35,7 @@ namespace JewelleryStore.Pages.Modules.Products
                 return Page();
             }
 
-            _context.Productos.Add(Productos);
+            _context.Compras.Add(Compras);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

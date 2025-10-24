@@ -18,6 +18,10 @@ public partial class Productos
     [Column("CategoriaID")]
     public int? CategoriaId { get; set; }
 
+    public int? StockActual { get; set; }
+
+    public bool? Activo { get; set; }
+
     [Column(TypeName = "decimal(10, 2)")]
     public decimal? Precio { get; set; }
 
@@ -25,9 +29,15 @@ public partial class Productos
     [InverseProperty("Productos")]
     public virtual Categorias? Categoria { get; set; }
 
-    [InverseProperty("Producto")]
-    public virtual ICollection<Imagenes> Imagenes { get; set; } = new List<Imagenes>();
+    [InverseProperty("IdProductoNavigation")]
+    public virtual ICollection<DetalleCompras> DetalleCompras { get; set; } = new List<DetalleCompras>();
+
+    [InverseProperty("IdProductoNavigation")]
+    public virtual ICollection<DetalleDevoluciones> DetalleDevoluciones { get; set; } = new List<DetalleDevoluciones>();
+
+    [InverseProperty("IdProductoNavigation")]
+    public virtual ICollection<DetalleVentas> DetalleVentas { get; set; } = new List<DetalleVentas>();
 
     [InverseProperty("Producto")]
-    public virtual ICollection<Ventas> Ventas { get; set; } = new List<Ventas>();
+    public virtual ICollection<Imagenes> Imagenes { get; set; } = new List<Imagenes>();
 }

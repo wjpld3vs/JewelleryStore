@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JewelleryStore.Data;
 
-namespace JewelleryStore.Pages.Modules.Products
+namespace JewelleryStore.Pages.Modules.ModuloCompras
 {
     public class EditModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace JewelleryStore.Pages.Modules.Products
         }
 
         [BindProperty]
-        public Productos Productos { get; set; } = default!;
+        public Compras Compras { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,13 +29,13 @@ namespace JewelleryStore.Pages.Modules.Products
                 return NotFound();
             }
 
-            var productos =  await _context.Productos.FirstOrDefaultAsync(m => m.ProductoId == id);
-            if (productos == null)
+            var compras =  await _context.Compras.FirstOrDefaultAsync(m => m.CompraId == id);
+            if (compras == null)
             {
                 return NotFound();
             }
-            Productos = productos;
-           ViewData["CategoriaId"] = new SelectList(_context.Categorias, "CategoriaId", "NombreCategoria");
+            Compras = compras;
+           ViewData["IdProveedor"] = new SelectList(_context.Proveedores, "IdProveedor", "NombreProveedor");
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace JewelleryStore.Pages.Modules.Products
                 return Page();
             }
 
-            _context.Attach(Productos).State = EntityState.Modified;
+            _context.Attach(Compras).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace JewelleryStore.Pages.Modules.Products
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductosExists(Productos.ProductoId))
+                if (!ComprasExists(Compras.CompraId))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace JewelleryStore.Pages.Modules.Products
             return RedirectToPage("./Index");
         }
 
-        private bool ProductosExists(int id)
+        private bool ComprasExists(int id)
         {
-            return _context.Productos.Any(e => e.ProductoId == id);
+            return _context.Compras.Any(e => e.CompraId == id);
         }
     }
 }

@@ -19,4 +19,9 @@ public partial class Proveedores
 
     [StringLength(500)]
     public string DireccionProveedor { get; set; } = null!;
+
+    public bool? Activo { get; set; }
+
+    [InverseProperty("IdProveedorNavigation")]
+    public virtual ICollection<Compras> Compras { get; set; } = new List<Compras>();
 }

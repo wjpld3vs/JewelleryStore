@@ -19,13 +19,25 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<Clientes> Clientes { get; set; }
 
+    public virtual DbSet<Compras> Compras { get; set; }
+
+    public virtual DbSet<DetalleCompras> DetalleCompras { get; set; }
+
+    public virtual DbSet<DetalleDevoluciones> DetalleDevoluciones { get; set; }
+
+    public virtual DbSet<DetalleVentas> DetalleVentas { get; set; }
+
     public virtual DbSet<DetallesCompletosVentasImagenes> DetallesCompletosVentasImagenes { get; set; }
+
+    public virtual DbSet<Devoluciones> Devoluciones { get; set; }
 
     public virtual DbSet<Imagenes> Imagenes { get; set; }
 
     public virtual DbSet<Productos> Productos { get; set; }
 
     public virtual DbSet<Proveedores> Proveedores { get; set; }
+
+    public virtual DbSet<Reembolsos> Reembolsos { get; set; }
 
     public virtual DbSet<Ubicaciones> Ubicaciones { get; set; }
 
@@ -52,6 +64,50 @@ public partial class AppDbContext : DbContext
             entity.HasKey(e => e.ClienteId).HasName("PK__Clientes__71ABD0A71EDF22C6");
         });
 
+        modelBuilder.Entity<Compras>(entity =>
+        {
+            entity.HasOne(d => d.IdProveedorNavigation).WithMany(p => p.Compras)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Compras_Proveedores");
+        });
+
+        modelBuilder.Entity<DetalleCompras>(entity =>
+        {
+            entity.HasOne(d => d.IdCompraNavigation).WithMany(p => p.DetalleCompras)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_DetalleCompras_Compras");
+
+            entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.DetalleCompras)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_DetalleCompras_Productos");
+        });
+
+        modelBuilder.Entity<DetalleDevoluciones>(entity =>
+        {
+            entity.HasOne(d => d.IdDetalleVentaNavigation).WithMany(p => p.DetalleDevoluciones)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_DetalleDevoluciones_DetalleVentas");
+
+            entity.HasOne(d => d.IdDevolucionNavigation).WithMany(p => p.DetalleDevoluciones)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_DetalleDevoluciones_Devoluciones");
+
+            entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.DetalleDevoluciones)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_DetalleDevoluciones_Productos");
+        });
+
+        modelBuilder.Entity<DetalleVentas>(entity =>
+        {
+            entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.DetalleVentas)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_DetalleVentas_Productos");
+
+            entity.HasOne(d => d.IdVentaNavigation).WithMany(p => p.DetalleVentas)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_DetalleVentas_Ventas");
+        });
+
         modelBuilder.Entity<DetallesCompletosVentasImagenes>(entity =>
         {
             entity.ToView("DetallesCompletosVentas_imagenes");
@@ -69,6 +125,13 @@ public partial class AppDbContext : DbContext
             entity.HasKey(e => e.ProductoId).HasName("PK__Producto__A430AE83BABB41D1");
 
             entity.HasOne(d => d.Categoria).WithMany(p => p.Productos).HasConstraintName("FK__Productos__Categ__267ABA7A");
+        });
+
+        modelBuilder.Entity<Reembolsos>(entity =>
+        {
+            entity.HasOne(d => d.IdDevolucionNavigation).WithMany(p => p.Reembolsos)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Reembolsos_Devoluciones");
         });
 
         modelBuilder.Entity<Ubicaciones>(entity =>
@@ -93,8 +156,6 @@ public partial class AppDbContext : DbContext
             entity.ToTable(tb => tb.HasTrigger("trg_AfterInsertUpdateVentas"));
 
             entity.HasOne(d => d.Cliente).WithMany(p => p.Ventas).HasConstraintName("FK__Ventas__ClienteI__33D4B598");
-
-            entity.HasOne(d => d.Producto).WithMany(p => p.Ventas).HasConstraintName("FK__Ventas__Producto__31EC6D26");
 
             entity.HasOne(d => d.Ubicacion).WithMany(p => p.Ventas).HasConstraintName("FK__Ventas__Ubicacio__34C8D9D1");
 

@@ -14,9 +14,6 @@ public partial class Ventas
 
     public DateOnly? Fecha { get; set; }
 
-    [Column("ProductoID")]
-    public int? ProductoId { get; set; }
-
     [Column("VendedorID")]
     public int? VendedorId { get; set; }
 
@@ -29,15 +26,23 @@ public partial class Ventas
     public int? Cantidad { get; set; }
 
     [Column(TypeName = "decimal(10, 2)")]
-    public decimal? MontoTotal { get; set; }
+    public decimal? Subtotal { get; set; }
+
+    [Column("IVA", TypeName = "decimal(18, 2)")]
+    public decimal? Iva { get; set; }
+
+    [Column(TypeName = "decimal(18, 2)")]
+    public decimal? Total { get; set; }
+
+    [StringLength(100)]
+    public string? Estado { get; set; }
 
     [ForeignKey("ClienteId")]
     [InverseProperty("Ventas")]
     public virtual Clientes? Cliente { get; set; }
 
-    [ForeignKey("ProductoId")]
-    [InverseProperty("Ventas")]
-    public virtual Productos? Producto { get; set; }
+    [InverseProperty("IdVentaNavigation")]
+    public virtual ICollection<DetalleVentas> DetalleVentas { get; set; } = new List<DetalleVentas>();
 
     [ForeignKey("UbicacionId")]
     [InverseProperty("Ventas")]
